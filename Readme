@@ -1,0 +1,32 @@
+[install external library]
+
+cd external/
+cd libpng
+wget https://android.googlesource.com/platform/external/libpng/+archive/master.tar.gz
+tar zxvf master.tar.gz
+cd ..
+cd zlib
+wget https://android.googlesource.com/platform/external/zlib/+archive/master.tar.gz
+tar zxvf master.tar.gz
+cd ..
+
+
+[build]
+
+mkdir build
+cd build
+cmake ../ -DDEQP_TARGET=x11_egl_glx -DCMAKE_C_FLAGS="-m64" -DCMAKE_CXX_FLAGS="-m64" -DCMAKE_BUILD_TYPE=Debug
+make -j16
+
+
+[execute]
+
+cd cd modules/
+
+cd gles2
+./deqp-gles2
+
+cd ..
+
+cd gles31/
+./deqp-gles31

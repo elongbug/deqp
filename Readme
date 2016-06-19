@@ -15,13 +15,14 @@ cd ..
 
 mkdir build
 cd build
-cmake ../ -DDEQP_TARGET=x11_egl_glx -DCMAKE_C_FLAGS="-m64" -DCMAKE_CXX_FLAGS="-m64" -DCMAKE_BUILD_TYPE=Debug
+#cmake ../ -DDEQP_TARGET=x11_egl_glx -DCMAKE_C_FLAGS="-m64" -DCMAKE_CXX_FLAGS="-m64" -DCMAKE_BUILD_TYPE=Debug
+cmake ../ -DDEQP_TARGET=wayland -DCMAKE_C_FLAGS="-m64" -DCMAKE_CXX_FLAGS="-m64" -DCMAKE_BUILD_TYPE=Debug
 make -j16
 
 
 [execute]
 
-cd cd modules/
+cd modules/
 
 cd gles2
 ./deqp-gles2

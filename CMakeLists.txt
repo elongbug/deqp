@@ -10,6 +10,8 @@ project(dEQP-Core-${DEQP_TARGET})
 include(framework/delibs/cmake/Defs.cmake NO_POLICY_SCOPE)
 include(framework/delibs/cmake/CFlags.cmake)
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+
 add_definitions(-DDE_ASSERT_FAILURE_CALLBACK)
 
 # dEQP-specific configuration. Target file should override these.

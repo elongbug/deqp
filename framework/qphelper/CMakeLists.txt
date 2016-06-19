@@ -44,7 +44,7 @@ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/qpReleaseInfo.inl")
 	set(USE_RELEASE_INFO_FILE ON)
 
 elseif (EXISTS "${CMAKE_SOURCE_DIR}/.git")
-	find_program(PYTHON_BIN python)
+	find_program(PYTHON_BIN python2)
 
 	if (PYTHON_BIN)
 		message(STATUS "Using git revision as release identifier")

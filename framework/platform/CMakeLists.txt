@@ -46,6 +46,17 @@ if (NOT DEFINED TCUTIL_PLATFORM_SRCS)
 		if (NOT (DEQP_SUPPORT_EGL OR DEQP_SUPPORT_GLX))
 		  message(FATAL_ERROR "At least one of EGL and GLX must be enabled for X11")
 		endif ()
+
+	elseif (DEQP_USE_WAYLAND)
+		set(TCUTIL_PLATFORM_SRCS
+			wayland/tcuWayland.cpp
+			wayland/tcuWayland.hpp
+			wayland/tcuWaylandPlatform.cpp
+			wayland/tcuWaylandPlatform.hpp
+			wayland/tcuWaylandEglPlatform.cpp
+			wayland/tcuWaylandEglPlatform.hpp
+			)
+
 	elseif (DE_OS_IS_ANDROID)
 		set(TCUTIL_PLATFORM_SRCS
 			android/tcuAndroidExecService.cpp
@@ -116,4 +127,10 @@ if (DEQP_USE_X11)
 	  # GLX functions don't currently have wrappers, so link directly to libGL.
 	  target_link_libraries(tcutil-platform GL)
 	endif ()
+endif ()
+
+# Wayland libraries
+if (DEQP_USE_WAYLAND)
+	find_package(Wayland REQUIRED)
+	target_link_libraries(tcutil-platform ${WAYLAND_LIBRARIES})
 endif ()
